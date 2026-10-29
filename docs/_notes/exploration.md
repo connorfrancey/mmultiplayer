@@ -72,11 +72,11 @@ Bugs and misleading names are detailed in `code-issues.md`. In short:
 
 ## How examples will be verified
 
-The project is MSVC-only and this machine is Linux. MinGW `i686-w64-mingw32-g++ -fpermissive -include cstdint` parses `sdk.h` + `engine.h` + `menu.h` + `settings.h` + ImGui, with two blockers:
-- a template-parameter shadow in `ME_Basic.hpp` (`TArray`'s nested `template <class T> friend struct TTransArray`), which MSVC accepts;
-- case-sensitive system headers (`WinUser.h`, `Windows.h`).
+The project is MSVC-only and this machine is Linux. MinGW `i686-w64-mingw32-g++ -std=c++17 -fms-extensions -include cstdint -fsyntax-only` parses `sdk.h` + `engine.h` + `menu.h` + `settings.h` + ImGui in **strict mode**, after two workarounds that live only in a scratch copy:
+- the template-parameter shadow in `ME_Basic.hpp` is renamed (MSVC accepts the original; GCC rejects it);
+- case shims are added for `WinUser.h`, `Windows.h`, `Psapi.h` and `TlHelp32.h`.
 
-Verification uses a scratch copy of the headers with that one line patched, plus case shims. Doc examples get full type-checking against the real declarations (`-fsyntax-only`). They are **not** linked, built with MSVC, or run in-game.
+`-fpermissive` was tried first and dropped, because it silently accepted a callback with the wrong signature. Doc snippets get full type-checking against the real declarations. They are **not** linked, built with MSVC, or run in-game.
 
 ## Open questions
 
