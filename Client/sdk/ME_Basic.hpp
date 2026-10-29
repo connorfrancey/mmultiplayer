@@ -2,9 +2,7 @@
 
 // Mirror's Edge (1.0) SDK
 
-#ifdef _MSC_VER
-	#pragma pack(push, 0x4)
-#endif
+#pragma pack(push, 0x4)
 
 namespace Classes
 {
@@ -13,7 +11,7 @@ class UObject;
 template<typename Fn>
 inline Fn GetVFunction(const void *instance, std::size_t index)
 {
-	auto vtable = *reinterpret_cast<const void***>(const_cast<void*>(instance));
+	auto vtable = *reinterpret_cast<void* const* const*>(instance);
 	return reinterpret_cast<Fn>(vtable[index]);
 }
 
@@ -22,7 +20,7 @@ struct TArray
 {
 	friend struct FString;
 
-	template <class T>
+	template <class U>
 	friend struct TTransArray;
 
 public:
@@ -309,6 +307,4 @@ struct FScriptDelegate
 };
 }
 
-#ifdef _MSC_VER
-	#pragma pack(pop)
-#endif
+#pragma pack(pop)

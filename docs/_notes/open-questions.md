@@ -28,3 +28,6 @@ Every `<!-- TODO: verify -->` in the docs maps to one of these. Most need either
 16. Does `MSBuild Client.vcxproj -property:Platform=x86` build, given that the project only declares `Win32`? (`getting-started/building.md`)
 17. Does the launcher normally need administrator rights? (`getting-started/building.md`)
 18. Which Visual Studio version do maintainers build with? `.vscode/tasks.json` points at VS 18 Build Tools, but the project pins toolset v143. (`getting-started/building.md`)
+19. Does `Client/sdk/CMakeLists.txt` build with real MSVC (`cmake -A Win32`)? It's only been built with MinGW GCC and checked with Clang in MSVC-ABI mode. (`getting-started/building.md`)
+20. What's the minimum Doxygen version for `me_sdk_docs`? Tested with 1.15.0. (`getting-started/requirements.md`)
+21. Should the 56 MSVC-only layout mismatches (code-issues #32) be fixed by flattening the affected structs? It's harmless today, but it's a latent bug for any addon touching UI anchor or stumble-move fields.

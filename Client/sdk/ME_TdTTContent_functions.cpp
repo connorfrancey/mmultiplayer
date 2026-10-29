@@ -1,10 +1,8 @@
 // Mirror's Edge (1.0) SDK
 
-#ifdef _MSC_VER
-	#pragma pack(push, 0x4)
-#endif
+#pragma pack(push, 0x4)
 
-#include "../sdk.h"
+#include "ME_SDK.hpp"
 
 namespace Classes
 {
@@ -336,6 +334,4 @@ class USoundNodeWave* UTdFinishlineTimeMessage::STATIC_GetAnnouncementSound(clas
 
 }
 
-#ifdef _MSC_VER
-	#pragma pack(pop)
-#endif
+#pragma pack(pop)

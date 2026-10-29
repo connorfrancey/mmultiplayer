@@ -1,6 +1,6 @@
 # The game SDK
 
-`Client/sdk/` holds a C++ mirror of Mirror's Edge's UnrealScript classes. Every header is stamped `// Mirror's Edge (1.0) SDK`. You include it all at once with `#include "sdk.h"`, which `engine.h` already does. Everything lives in `namespace Classes`.
+`Client/sdk/` holds a C++ mirror of Mirror's Edge's UnrealScript classes. Every header is stamped `// Mirror's Edge (1.0) SDK`. You include it all at once with `#include "ME_SDK.hpp"` (or the client's `sdk.h`, which forwards to it and is what `engine.h` includes). Everything lives in `namespace Classes`.
 
 <!-- TODO: verify which tool generated Client/sdk and whether regeneration is supported; the files have been hand-edited since. -->
 
@@ -16,6 +16,10 @@ Each of the 17 UnrealScript packages produces four files:
 | `ME_<Pkg>_functions.cpp` | Function wrapper bodies |
 
 The packages that matter most: **Core** (`UObject`, `UClass`, `UFunction`, math structs), **Engine** (`AActor`, `APawn`, `AWorldInfo`, components; about 1,150 classes) and **TdGame** (Mirror's Edge gameplay: `ATdPlayerPawn`, `ATdPlayerController`, `UTdMove_*`; about 900 classes). [Finding game classes](../guides/finding-game-classes.md) explains how to search them.
+
+## Packing and compilers
+
+Each generated header sets its own packing with `#pragma pack(push, ...)`. Most use 4 bytes, but **`ME_Engine_classes.hpp` packs to 1 byte**. This packing now applies on every compiler (it used to be MSVC-only), so MSVC and MinGW (GCC or Clang) produce the same layouts. One exception: on 56 fields across 17 rarely used classes (`FUIAnchorPosition`, `UTdMove_Stumble`, ...), MinGW matches the generator's offsets and MSVC doesn't, because MSVC never reuses a base struct's tail padding. Don't change the packing around SDK includes. Details: [code issues](../_notes/code-issues.md).
 
 ## Naming
 

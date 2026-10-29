@@ -2,7 +2,7 @@
 
 **Headers:** `Client/sdk/ME_Basic.hpp`, `Client/sdk/ME_Core_structs.hpp`, `Client/sdk/ME_Core_classes.hpp` · **Namespace:** `Classes`
 
-The generated SDK is packed with `#pragma pack(push, 0x4)` so it matches the game's memory layout. Don't change packing around SDK includes.
+**Umbrella header:** `Client/sdk/ME_SDK.hpp` (the client's `Client/sdk.h` forwards to it). Each generated header sets its own packing, 4 bytes except `ME_Engine_classes.hpp` at 1 byte, so layouts match the game's memory. Don't change packing around SDK includes. See [Packing and compilers](../concepts/game-sdk.md#packing-and-compilers).
 
 Concepts first: [The game SDK](../concepts/game-sdk.md).
 

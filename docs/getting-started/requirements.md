@@ -8,6 +8,8 @@
 | Visual Studio 2022 or Build Tools with the **Desktop development with C++** workload (toolset **v143**) | The project is MSVC-only. The SDK relies on MSVC behaviour such as `__try`/`__except` and `__thiscall` vtable calls. | `PlatformToolset` |
 | **DirectX SDK (June 2010)** | Provides `d3dx9.h`. The project reads `$(DXSDK_DIR)Include` and `$(DXSDK_DIR)Lib\x86`. The installer sets `DXSDK_DIR`. | `IncludePath`, `LibraryPath`, `CONTRIBUTING.md` |
 | Git Bash (optional) | Runs `./build.sh`. | `CONTRIBUTING.md` |
+| CMake 3.21+ and Ninja (optional) | Builds the SDK as a standalone library, for other projects such as memenu, and the Doxygen docs. | `Client/sdk/CMakeLists.txt` |
+| Doxygen (optional; tested with 1.15.0) | Generates the HTML docs (`me_sdk_docs` target). <!-- TODO: verify the minimum Doxygen version (the config uses MARKDOWN_ID_STYLE and \htmlonly[block]) --> | `Client/sdk/CMakeLists.txt` |
 | Go and Inno Setup (optional) | Only needed to build the installer with `package.sh`. | `CONTRIBUTING.md` |
 
 The project builds **32-bit (Win32) only**. Mirror's Edge is a 32-bit game, and the x64 configurations were removed in 2.4.0.
