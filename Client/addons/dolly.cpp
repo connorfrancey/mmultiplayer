@@ -137,11 +137,11 @@ static void FixTimeline() {
         // Normalize the rotations
         m.Rotation = RotatorToVector(VectorToRotator(m.Rotation));
 
-        duration = max(m.Frame, duration);
+        duration = (std::max)(m.Frame, duration);
     }
 
     for (auto &r : recordings) {
-        duration = max(r.StartFrame + static_cast<int>(r.Frames.size()) - 1, duration);
+        duration = (std::max)(r.StartFrame + static_cast<int>(r.Frames.size()) - 1, duration);
     }
 
     std::sort(markers.begin(), markers.end(),

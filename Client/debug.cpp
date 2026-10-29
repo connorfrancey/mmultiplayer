@@ -1,7 +1,7 @@
-#include <Windows.h>
+#include <windows.h>
 
-#include <Psapi.h>
-#include <TlHelp32.h>
+#include <psapi.h>
+#include <tlhelp32.h>
 #include <conio.h>
 #include <stdio.h>
 #include <string>

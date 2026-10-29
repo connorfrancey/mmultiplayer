@@ -2,6 +2,7 @@
 #ifndef _SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING
 #define _SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING
 #endif
+#include <algorithm>
 #include <codecvt>
 
 #include "../engine.h"
@@ -181,7 +182,7 @@ static void MiscTab()
             {
                 if (ImGui::InputFloat("Game Speed", &PermanentGameSpeed, 0.1f, 0.5f, "%.3f", ImGuiInputTextFlags_EnterReturnsTrue))
                 {
-                    Settings::SetSetting({ "Misc", "PermanentGameSpeed" }, PermanentGameSpeed = max(0.1f, PermanentGameSpeed));
+                    Settings::SetSetting({ "Misc", "PermanentGameSpeed" }, PermanentGameSpeed = (std::max)(0.1f, PermanentGameSpeed));
                 }
             }
         }

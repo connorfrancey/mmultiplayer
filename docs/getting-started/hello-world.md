@@ -69,7 +69,7 @@ Add the two files to `Client/Client.vcxproj`. In Visual Studio, use **Add > Exis
 <ClCompile Include="addons\hello.cpp" />
 ```
 
-`Client.vcxproj.filters` only controls the Solution Explorer folders and is optional.
+`Client.vcxproj.filters` only controls the Solution Explorer folders and is optional. The CMake build globs `Client/addons/`, so it needs no change.
 
 ## 3. Register the addon
 

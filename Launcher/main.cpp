@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include <Psapi.h>
+#include <psapi.h>
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, char *, int) {
     if (!AdjustCurrentPrivilege(SE_DEBUG_NAME)) {
@@ -82,17 +82,15 @@ bool LoadClient(HANDLE process) {
     return status;
 }
 
-HANDLE CreateDialogThread() {
-    return CreateThread(
-        nullptr, 0,
-        [](void *) -> unsigned long {
-            MessageBox(0, L"Waiting for Mirror's Edge to start. Click OK to stop.", L"Waiting...",
-                       MB_OK);
+static DWORD WINAPI DialogThread(LPVOID) {
+    MessageBox(0, L"Waiting for Mirror's Edge to start. Click OK to stop.", L"Waiting...", MB_OK);
 
-            exit(0);
-            return 0;
-        },
-        nullptr, 0, nullptr);
+    exit(0);
+    return 0;
+}
+
+HANDLE CreateDialogThread() {
+    return CreateThread(nullptr, 0, DialogThread, nullptr, 0, nullptr);
 }
 
 bool HasModule(HANDLE process, const wchar_t *module) {
