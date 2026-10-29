@@ -95,6 +95,7 @@ The characters `SpawnCharacter` can create. `Characters[i]` is the display name 
 
 ## `SpawnCharacter`
 
+<!-- verify: skip (signature restated from the header; checked by the signature check) -->
 ```cpp
 void SpawnCharacter(Character character, Classes::ASkeletalMeshActorSpawnable *&spawned);
 ```
@@ -120,6 +121,7 @@ Calls `actor->ShutDown()`. Does nothing if `actor` is `nullptr`. It doesn't clea
 
 ## `TransformBones`
 
+<!-- verify: skip (signature restated from the header; checked by the signature check) -->
 ```cpp
 #define PLAYER_PAWN_BONE_COUNT (108)
 

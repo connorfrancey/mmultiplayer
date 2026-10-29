@@ -20,6 +20,7 @@ public:
 
 ## `Initialize`
 
+<!-- verify: skip (signature restated from the header; checked by the signature check) -->
 ```cpp
 virtual bool Initialize() = 0;
 ```
@@ -32,6 +33,7 @@ Called once at startup, from `InitThread`, after `Engine::Initialize()`, `Debug:
 
 ## `GetName`
 
+<!-- verify: skip (signature restated from the header; checked by the signature check) -->
 ```cpp
 virtual std::string GetName() = 0;
 ```

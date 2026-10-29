@@ -4,6 +4,7 @@
 
 The bundled Dear ImGui is **1.90.2**. Everything in upstream ImGui is available too. These are the project additions:
 
+<!-- verify: skip (signature restated from the header; checked by the signature check) -->
 ```cpp
 namespace ImGui {
     bool BeginWindow(const char* name, bool* p_open = NULL, ImGuiWindowFlags flags = 0);
