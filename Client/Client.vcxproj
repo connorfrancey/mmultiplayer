@@ -120,6 +120,7 @@
     <ClInclude Include="SDK\ME_ALAudio_parameters.hpp" />
     <ClInclude Include="SDK\ME_ALAudio_structs.hpp" />
     <ClInclude Include="SDK\ME_Basic.hpp" />
+    <ClInclude Include="SDK\ME_SDK.hpp" />
     <ClInclude Include="SDK\ME_Core_classes.hpp" />
     <ClInclude Include="SDK\ME_Core_parameters.hpp" />
     <ClInclude Include="SDK\ME_Core_structs.hpp" />

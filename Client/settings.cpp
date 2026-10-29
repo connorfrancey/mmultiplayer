@@ -1,5 +1,5 @@
 #include <fstream>
-#include <Windows.h>
+#include <windows.h>
 
 #include <filesystem>
 
@@ -16,13 +16,12 @@ static std::string GetSettingsPath()
 		return path;
 	}
 
-	char* buffer = nullptr;
-	if (_dupenv_s(&buffer, nullptr, "APPDATA") == 0 && buffer != nullptr)
+	char buffer[MAX_PATH];
+	const DWORD length = GetEnvironmentVariableA("APPDATA", buffer, MAX_PATH);
+	if (length > 0 && length < MAX_PATH)
 	{
-		std::string settingsPath(buffer);
+		std::string settingsPath(buffer, length);
 		settingsPath += "\\MMultiplayer";
-
-		free(buffer);
 
 		if (!std::filesystem::exists(settingsPath))
 		{

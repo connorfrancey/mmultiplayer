@@ -36,6 +36,6 @@ Since 2.3.0, closing the console window this way no longer closes the game. Clos
 
 1. suspends all other threads and destroys the game window;
 2. opens a console and prints the faulting address as `module+offset`, the exception code, the registers, and every stack value that points into a loaded module;
-3. asks you to report the crash at `https://github.com/softsoundd/mmultiplayer/issues`, waits for a key, and exits with code 1.
+3. asks you to report the crash at `https://github.com/connorfrancey/mmultiplayer/issues`, waits for a key, and exits with code 1.
 
 With a debugger attached, the exception goes to the debugger. That makes Visual Studio's **Debug > Attach to Process** the best way to debug an addon crash. See [Troubleshooting](../troubleshooting.md#the-game-closes-and-a-console-shows-an-unhandled-exception-occured-at).

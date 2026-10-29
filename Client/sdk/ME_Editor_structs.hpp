@@ -2,9 +2,7 @@
 
 // Mirror's Edge (1.0) SDK
 
-#ifdef _MSC_VER
-	#pragma pack(push, 0x4)
-#endif
+#pragma pack(push, 0x4)
 
 namespace Classes
 {
@@ -99,6 +97,4 @@ enum class ETextureRenderTargetFactoryNew_Format : uint8_t
 
 }
 
-#ifdef _MSC_VER
-	#pragma pack(pop)
-#endif
+#pragma pack(pop)

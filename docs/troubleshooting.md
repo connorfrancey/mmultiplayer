@@ -26,7 +26,7 @@ Your lambda captures something, or its parameters don't match the typedef exactl
 
 ### Linker errors for your addon's functions
 
-Your `.cpp` isn't in `Client/Client.vcxproj`. Add a `<ClCompile Include="addons\yourfile.cpp" />` entry. See [Hello world, step 2](getting-started/hello-world.md#2-add-the-files-to-the-project).
+Your `.cpp` isn't in `Client/Client.vcxproj`. Add a `<ClCompile Include="addons\yourfile.cpp" />` entry. See [Hello world, step 2](getting-started/hello-world.md#2-add-the-files-to-the-project). (The CMake build globs `Client/addons/`; re-run the build so it picks up new files.)
 
 ## Launching
 

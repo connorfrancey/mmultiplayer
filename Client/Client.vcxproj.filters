@@ -63,6 +63,9 @@
     <ClInclude Include="SDK\ME_Basic.hpp">
       <Filter>Header Files\sdk</Filter>
     </ClInclude>
+    <ClInclude Include="SDK\ME_SDK.hpp">
+      <Filter>Header Files\sdk</Filter>
+    </ClInclude>
     <ClInclude Include="SDK\ME_Core_classes.hpp">
       <Filter>Header Files\sdk</Filter>
     </ClInclude>

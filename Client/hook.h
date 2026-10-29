@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Windows.h>
+#include <windows.h>
 
 #define JMP_SIZE (5)
 #define RELATIVE_ADDR(addr, size)                                              \

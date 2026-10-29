@@ -1,4 +1,4 @@
-module github.com/softsoundd/mmultiplayer
+module github.com/connorfrancey/mmultiplayer
 
 go 1.19
 

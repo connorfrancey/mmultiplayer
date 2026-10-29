@@ -3,14 +3,16 @@
 #define _SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING
 #endif
 
+#include <algorithm>
 #include <codecvt>
 #include <locale>
 #include <mutex>
 #include <shared_mutex>
+#include <thread>
 #include <vector>
 
-#include <WS2tcpip.h>
-#include <WinSock2.h>
+#include <ws2tcpip.h>
+#include <winsock2.h>
 #pragma comment(lib, "ws2_32.lib")
 
 #include "../engine.h"
@@ -1034,7 +1036,7 @@ static void OnRender(IDirect3DDevice9 *device)
             auto diff = static_cast<float>(GetTickCount64() - Chat.LastTime) / 1000.0f;
             if (diff > 5.0f) 
             {
-                opacity = max(0, 1.0f - (diff - 5.0f));
+                opacity = (std::max)(0.0f, 1.0f - (diff - 5.0f));
             }
         } 
         else 
@@ -1071,7 +1073,7 @@ static void OnRender(IDirect3DDevice9 *device)
         const auto pos = ImVec2(inputWidthOffset, io.DisplaySize.y - inputHeightOffset - height);
 
         ImGui::SetWindowPos(pos, ImGuiCond_Always);
-        ImGui::SetWindowSize(ImVec2(window->Size.x, max(window->Size.y, height)));
+        ImGui::SetWindowSize(ImVec2(window->Size.x, (std::max)(window->Size.y, height)));
 
         window->DrawList->AddRectFilled(pos, ImVec2(pos.x + width, pos.y + height), ImColor(ImVec4(0, 0, 0, 0.4f * opacity)));
 
@@ -1156,7 +1158,7 @@ static void OnRenderGames(IDirect3DDevice9 *device)
 
         static float rightPadding = 80.0f;
         float y = (playersInTheSameLevel * textHeight) - textHeight + (padding / 2);
-        float x = min(maxNameWidth, longestNameWidth);
+        float x = (std::min)(maxNameWidth, longestNameWidth);
 
         window->DrawList->AddRectFilled(ImVec2(), ImVec2(rightPadding + x + padding, y + padding + textHeight), ImColor(ImVec4(0, 0, 0, 0.4f)));
 

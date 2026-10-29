@@ -7,7 +7,7 @@ It has two layers:
 | Layer | Where | What you get |
 |---|---|---|
 | **Mod framework** | `Client/*.h` | An `Addon` base class, game callbacks (tick, render, input, level load, death, script events), cached access to the engine/world/player, an in-game ImGui menu, and JSON settings that persist between sessions. |
-| **Generated game SDK** | `Client/sdk/`, included through `Client/sdk.h` | C++ declarations for roughly 2,500 of the game's UnrealScript classes, structs and enums in `namespace Classes`. You can read and write object fields and call script functions directly. |
+| **Generated game SDK** | `Client/sdk/` (its own CMake project), included through `ME_SDK.hpp` or `Client/sdk.h` | C++ declarations for roughly 2,500 of the game's UnrealScript classes, structs and enums in `namespace Classes`. You can read and write object fields and call script functions directly. |
 
 ## Who this is for
 
@@ -24,6 +24,10 @@ You're a modder who knows intermediate C++ and Visual Studio and wants to add fe
 ## Platform
 
 Windows only, 32-bit only. You build with Visual Studio 2022 (toolset v143) and the DirectX SDK (June 2010). Mirror's Edge 1.0 is the target. See [Requirements](getting-started/requirements.md).
+
+## Building these docs
+
+The pages are plain Markdown and render on GitHub. To build an HTML site with Doxygen, configure the SDK's CMake project and build `me_sdk_docs`. See [Building the SDK with CMake](getting-started/building.md#building-the-sdk-with-cmake).
 
 ## Docs map
 

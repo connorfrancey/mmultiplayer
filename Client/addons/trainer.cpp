@@ -1,4 +1,5 @@
 ﻿#include "trainer.h"
+#include <algorithm>
 #include "../engine.h"
 #include "../hook.h"
 #include "../imgui/imgui.h"
@@ -1278,7 +1279,7 @@ static void OnRender(IDirect3DDevice9* device)
                     case 8: Items[i]->Draw(CheckpointTime); break;
                     case 9: Items[i]->Draw(static_cast<int>(pawn->MovementState.GetValue())); break;
                     case 10: Items[i]->Draw(pawn->Health); break;
-                    case 11: Items[i]->Draw(min(100.0f, controller->ReactionTimeEnergy)); break;
+                    case 11: Items[i]->Draw((std::min)(100.0f, controller->ReactionTimeEnergy)); break;
                     case 12: Items[i]->Draw(pawn->LastJumpLocation.Z); break;
                     case 13: Items[i]->Draw(pawn->Location.Z - pawn->LastJumpLocation.Z); break;
                     default: 
@@ -1432,7 +1433,7 @@ static void OnTick(const float deltaTime)
 
         if (Engine::IsKeyDown(Fly.SlowerKeybind)) 
         {
-            Fly.Speed = max(0.1f, Fly.Speed - Fly.SpeedIncrement);
+            Fly.Speed = (std::max)(0.1f, Fly.Speed - Fly.SpeedIncrement);
         }
 
         const float angle = (static_cast<float>(controller->Rotation.Yaw % 0x10000) / static_cast<float>(0x10000)) * (2 * CONST_Pi);

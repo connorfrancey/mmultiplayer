@@ -1,10 +1,8 @@
 // Mirror's Edge (1.0) SDK
 
-#ifdef _MSC_VER
-	#pragma pack(push, 0x4)
-#endif
+#pragma pack(push, 0x4)
 
-#include "../sdk.h"
+#include "ME_SDK.hpp"
 #include <excpt.h>
 
 namespace Classes
@@ -35,15 +33,19 @@ std::string UObject::GetFullName() const
 }
 
 bool UObject::IsA(UClass *cmp) const {
+#ifdef _MSC_VER
 	__try {
+#endif
 		for (auto super = Class; super; super = static_cast<UClass *>(super->SuperField)) {
 			if (super == cmp) {
 				return true;
 			}
 		}
+#ifdef _MSC_VER
 	} __except (EXCEPTION_EXECUTE_HANDLER) {
 		// NOTHING
 	}
+#endif
 
 	return false;
 }
@@ -6755,6 +6757,4 @@ int UHelpCommandlet::Main(const struct FString& Params)
 
 }
 
-#ifdef _MSC_VER
-	#pragma pack(pop)
-#endif
+#pragma pack(pop)

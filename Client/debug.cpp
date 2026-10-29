@@ -1,7 +1,7 @@
-#include <Windows.h>
+#include <windows.h>
 
-#include <Psapi.h>
-#include <TlHelp32.h>
+#include <psapi.h>
+#include <tlhelp32.h>
 #include <conio.h>
 #include <stdio.h>
 #include <string>
@@ -130,7 +130,7 @@ static long WINAPI ExceptionHandler(EXCEPTION_POINTERS *exception) {
     }
 
     printf("\nIf this was unexpected, please copy this output and create an "
-           "issue at:\n\thttps://github.com/softsoundd/mmultiplayer/issues\n\n");
+           "issue at:\n\thttps://github.com/connorfrancey/mmultiplayer/issues\n\n");
 
     printf("Press any key to exit...");
     static_cast<void>(_getch());
