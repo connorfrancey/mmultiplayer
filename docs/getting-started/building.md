@@ -128,6 +128,8 @@ cmake --build build/docs --target me_sdk_docs
 | `ME_SDK_DOCS_CLASS_REFERENCE` | `OFF` | Also document all ~2,500 generated classes. Takes about 2 minutes and about **1.2 GB** of HTML, because Doxygen repeats inherited members on every class page. The guides alone are about 3 MB. |
 | `ME_SDK_DOCS_DIR` | `<repo>/docs` | Markdown source folder |
 
+`.github/workflows/docs.yml` runs the same build on every push that touches the docs and publishes the HTML to GitHub Pages (Settings > Pages > Source: **GitHub Actions**).
+
 ## Run
 
 1. Put `mmultiplayer.dll` in the **same directory as `Launcher.exe`**. The launcher loads the DLL from its own folder. `build.sh` already puts both in `Release/`. If you installed the mod with the installer, it lives in `C:\Program Files\Mirror's Edge Multiplayer` (since 2.1.1). You can replace the DLL there instead, but keep a backup.

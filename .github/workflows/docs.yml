@@ -1,0 +1,65 @@
+# Builds the Doxygen docs (docs/ + framework headers) and publishes them to GitHub Pages.
+# Pages must use "GitHub Actions" as its source (Settings > Pages).
+
+name: Docs
+
+on:
+  push:
+    branches: [main, sdk-cmake]
+    paths:
+      - docs/**
+      - Client/*.h
+      - Client/imgui/imgui_mmultiplayer.h
+      - Client/sdk/CMakeLists.txt
+      - Client/sdk/ME_SDK.hpp
+      - Client/sdk/cmake/**
+      - CHANGELOG.md
+      - .github/workflows/docs.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+env:
+  DOXYGEN_VERSION: 1.15.0 # the docs use MARKDOWN_ID_STYLE, newer than Ubuntu's packaged Doxygen
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Doxygen
+        run: |
+          tag="Release_${DOXYGEN_VERSION//./_}"
+          curl -fsSL "https://github.com/doxygen/doxygen/releases/download/${tag}/doxygen-${DOXYGEN_VERSION}.linux.bin.tar.gz" \
+            | tar -xz -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/doxygen-${DOXYGEN_VERSION}/bin" >> "$GITHUB_PATH"
+
+      - name: Build docs
+        run: |
+          doxygen --version
+          cmake -S Client/sdk -B build/docs -DME_SDK_BUILD_LIBRARY=OFF
+          cmake --build build/docs --target me_sdk_docs
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/docs/docs/html
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
