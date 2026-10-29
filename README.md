@@ -2,7 +2,7 @@
 
 ## Setup
 
-1. Download the latest installer from <a href="https://github.com/softsoundd/mmultiplayer/releases">here</a>.
+1. Download the latest installer from <a href="https://github.com/connorfrancey/mmultiplayer/releases">here</a>.
 2. Run the program either before Mirror's Edge or when Mirror's Edge is running.
 3. Press `Insert` to view the in-game menu where you can adjust settings as you please.
 

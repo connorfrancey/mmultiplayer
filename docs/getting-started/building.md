@@ -20,7 +20,7 @@ package.sh       builds the installer
 ## Get the source
 
 ```bash
-git clone https://github.com/softsoundd/mmultiplayer.git
+git clone https://github.com/connorfrancey/mmultiplayer.git
 cd mmultiplayer
 ```
 
